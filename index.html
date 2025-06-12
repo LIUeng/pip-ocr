@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>OCR Image</title>
+    <style>
+        #container {
+            position: relative;
+            display: inline-flex;
+        }
+
+        #ocr-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+        }
+
+        .ocr-text {
+            position: absolute;
+            color: transparent;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="container">
+        <div id="ocr-container"></div>
+    </div>
+    <script>
+        const container = document.getElementById("container");
+        const ocr_container = document.getElementById("ocr-container");
+        const input_img = "./images/test.jpg";
+        // create img
+        const appendImg = (width) => {
+            const img = document.createElement("img");
+            img.src = input_img;
+            img.width = width;
+            container.appendChild(img);
+        };
+        // fetch ocr_data
+        fetch("http://localhost:8000/ocr/image").then(res => res.json()).then((res) => {
+            const ocr_data = res.data;
+            // 原尺寸显示
+            // const showWidth = ocr_data.originWidth;
+            // 缩小显示
+            const showWidth = 1048;
+            // append img
+            appendImg(showWidth);
+            // create ocr text
+            ocr_data.locations.forEach((ocr) => {
+                // 过滤空字符
+                if (!ocr.text) return;
+                const div = document.createElement("div");
+
+                div.className = "ocr-text";
+                div.style.top = (ocr.y / ocr_data.originHeight) * 100 + "%";
+                div.style.left = (ocr.x / ocr_data.originWidth) * 100 + "%";
+                div.style.fontSize = showWidth / ocr_data.originWidth * ocr.height + "px";
+                div.textContent = ocr.text;
+
+                ocr_container.appendChild(div);
+            });
+        });
+    </script>
+</body>
+
+</html>
