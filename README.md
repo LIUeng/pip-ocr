@@ -8,7 +8,6 @@
 
 [等比例文字识别](./assets/videos/缩放显示.mov)
 
-
 **日常使用到的软件中的图片文字识别功能并且支持复制**
 
 微信、钉钉、语雀...
@@ -122,6 +121,8 @@ pip install -r requirements.txt
 
 ### 关键代码
 
+[代码地址](https://github.com/LIUeng/pip-ocr/blob/main/app/api/routes/ocr.py)
+
 ```python
 from paddleocr import PaddleOCR
 from PIL import Image
@@ -189,6 +190,8 @@ pip install setuptools
 
 > 获取以下数据并处理
 
+[数据格式可参考 PaddleOCR 输出 JSON](https://github.com/LIUeng/pip-ocr/blob/main/output/test_res.json)
+
 ```json
 {
   "size": 234138,
@@ -227,14 +230,16 @@ pip install setuptools
 ### 注意点
 
 - 使用绝对定位
-    - left 图片显示宽度/图片实际宽度 * x(偏移量)
-    - top 图片显示高度/图片实际高度 * x(偏移量)
+  - left 图片显示宽度/图片实际宽度 \* x(偏移量)
+  - top 图片显示高度/图片实际高度 \* x(偏移量)
 - 文字透明可复制
   - color: transparent
 - font-size 计算
   - 图片显示宽度（高度）/图片实际宽度（高度） \* 文字的高度
 
 ### 实现
+
+[代码地址](https://github.com/LIUeng/pip-ocr/blob/main/index.html)
 
 ```html
 <div id="container">
