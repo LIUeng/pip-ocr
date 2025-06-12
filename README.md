@@ -2,11 +2,15 @@
 
 ## 展示
 
-[原图](./images/test.jpg)
+![原图](./images/test.jpg)
 
-[原尺寸文字识别](./assets/videos/原尺寸显示.mov)
+> 原尺寸文字识别
 
-[等比例文字识别](./assets/videos/缩放显示.mov)
+<video autoplay controls src="https://github.com/user-attachments/assets/697866b5-f8bb-46fc-9286-fded36f0464a" title="原尺寸"></video>
+
+> 缩放比例文字识别
+
+<video autoplay controls src="https://github.com/user-attachments/assets/a85d2e52-0343-404e-a089-b75de1ad31f9" title="缩放尺寸"></video>
 
 **日常使用到的软件中的图片文字识别功能并且支持复制**
 
